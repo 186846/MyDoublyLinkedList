@@ -1,7 +1,7 @@
-package µÚ¶şÖÜ×÷Òµ.MyDoublyLinkedList;
+package second.MyDoublyLinkedList;
 
 /**
- * »ùÓÚÁ´±í½á¹¹´æÈ¡ÔªËØµÄ·½·¨ API ¶¨Òå
+ * åŸºäºé“¾è¡¨ç»“æ„å­˜å–å…ƒç´ çš„æ–¹æ³• API å®šä¹‰
  * @param <E>
  */
 public interface MyList<E> {
