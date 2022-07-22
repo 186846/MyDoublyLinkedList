@@ -1,9 +1,9 @@
-package µÚ¶şÖÜ×÷Òµ.MyDoublyLinkedList;
+package secod.MyDoublyLinkedList;
 
 class Node<E>{
-    E item;//¼ÇÂ¼ÔªËØ
-    Node prev;//¼ÇÂ¼Ç°Ò»¸ö½Úµã¶ÔÏó
-    Node next;//¼ÇÂ¼ÏÂÒ»¸ö½Úµã¶ÔÏó
+    E item;//è®°å½•å…ƒç´ 
+    Node prev;//è®°å½•å‰ä¸€ä¸ªèŠ‚ç‚¹å¯¹è±¡
+    Node next;//è®°å½•ä¸‹ä¸€ä¸ªèŠ‚ç‚¹å¯¹è±¡
     public Node(Node<E> prev,E item,Node<E> next){
         this.prev = prev;
         this.item = item;
