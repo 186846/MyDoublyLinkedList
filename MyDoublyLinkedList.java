@@ -1,20 +1,20 @@
-package µÚ¶şÖÜ×÷Òµ.MyDoublyLinkedList;
+package second.MyDoublyLinkedList;
 
 /**
- * »ùÓÚË«ÏòÁ´±íÊµÏÖÔªËØ´æÈ¡µÄÈİÆ÷
+ * åŸºäºåŒå‘é“¾è¡¨å®ç°å…ƒç´ å­˜å–çš„å®¹å™¨
  */
 public class MyDoublyLinkedList<E> implements MyList<E> {
-    private Node head; //¼ÇÂ¼Í·½Úµã
-    private Node tail; //¼ÇÂ¼Î²½Úµã
-    private int size; //¼ÇÂ¼ÔªËØ¸öÊı
+    private Node head; //è®°å½•å¤´èŠ‚ç‚¹
+    private Node tail; //è®°å½•å°¾èŠ‚ç‚¹
+    private int size; //è®°å½•å…ƒç´ ä¸ªæ•°
 
-     //¹¦ÄÜÒ»¡£ÏòË«ÏòÁ´±íÖĞÌí¼ÓÔªËØµÄ·½·¨
+     //åŠŸèƒ½ä¸€ã€‚å‘åŒå‘é“¾è¡¨ä¸­æ·»åŠ å…ƒç´ çš„æ–¹æ³•
 
     @Override
     public void add(E element) {
         this.linkLast(element);
     }
-     // ½«½Úµã¶ÔÏóÌí¼Óµ½Ë«ÏòÁ´±íµÄÎ²²¿
+     // å°†èŠ‚ç‚¹å¯¹è±¡æ·»åŠ åˆ°åŒå‘é“¾è¡¨çš„å°¾éƒ¨
 
     private void linkLast(E element){
         final Node l = tail;
@@ -27,25 +27,25 @@ public class MyDoublyLinkedList<E> implements MyList<E> {
              l.next = newNode;
          this.size++;
     }
-    //¹¦ÄÜ¶ş¡£¸ù¾İÖ¸¶¨Î»ÖÃ»ñÈ¡ÔªËØ
+    //åŠŸèƒ½äºŒã€‚æ ¹æ®æŒ‡å®šä½ç½®è·å–å…ƒç´ 
     @Override
     public E get(int index) {
-        //¶Ô Index ×öºÏ·¨ĞÔĞ£Ñé
+        //å¯¹ Index åšåˆæ³•æ€§æ ¡éªŒ
         this.checkIndex(index);
-        //¸ù¾İÎ»ÖÃ²éÕÒ½Úµã¶ÔÏó
+        //æ ¹æ®ä½ç½®æŸ¥æ‰¾èŠ‚ç‚¹å¯¹è±¡
         Node<E> node = this.getNode(index);
         return node.item;
     }
-     // Ğ£Ñé Index µÄºÏ·¨ĞÔ
+     // æ ¡éªŒ Index çš„åˆæ³•æ€§
 
     private void checkIndex(int index){
         if(!(index >= 0 && index < this.size)){
             throw new IndexOutOfBoundsException("Index: "+index+" Size: "+size);
         }
     }
-    //¸ù¾İÎ»ÖÃ»ñÈ¡Ö¸¶¨½Úµã¶ÔÏó
+    //æ ¹æ®ä½ç½®è·å–æŒ‡å®šèŠ‚ç‚¹å¯¹è±¡
     private Node getNode(int index) {
-     //ÅĞ¶Ïµ±Ç°Î»ÖÃ¾àÀëÍ·»òÕßÎ²ÄÄ¸ö½Úµã¸ü½ü
+     //åˆ¤æ–­å½“å‰ä½ç½®è·ç¦»å¤´æˆ–è€…å°¾å“ªä¸ªèŠ‚ç‚¹æ›´è¿‘
         if (index < (this.size >> 1))
         {
             Node node = this.head;
@@ -62,47 +62,47 @@ public class MyDoublyLinkedList<E> implements MyList<E> {
     }
 
 
-    //¹¦ÄÜÈı¡£·µ»ØÔªËØµÄ¸öÊı
+    //åŠŸèƒ½ä¸‰ã€‚è¿”å›å…ƒç´ çš„ä¸ªæ•°
     @Override
     public int size() {
         return this.size;
     }
 
 
-     // ¹¦ÄÜËÄ¡£¸ù¾İÖ¸¶¨Î»ÖÃÉ¾³ıÔªËØ
+     // åŠŸèƒ½å››ã€‚æ ¹æ®æŒ‡å®šä½ç½®åˆ é™¤å…ƒç´ 
     @Override
     public E remove(int index) {
-        //¶Ô Index ½øĞĞºÏ·¨ĞÔĞ£Ñé
+        //å¯¹ Index è¿›è¡Œåˆæ³•æ€§æ ¡éªŒ
         this.checkIndex(index);
-        //¸ù¾İÖ¸¶¨Î»ÖÃ»ñÈ¡½Úµã¶ÔÏó
+        //æ ¹æ®æŒ‡å®šä½ç½®è·å–èŠ‚ç‚¹å¯¹è±¡
         Node<E> node = this.getNode(index);
-        //»ñÈ¡½Úµã¶ÔÏóÖĞµÄÔªËØ
+        //è·å–èŠ‚ç‚¹å¯¹è±¡ä¸­çš„å…ƒç´ 
         E item = node.item;
-        //ÅĞ¶Ïµ±Ç°½ÚµãÊÇ·ñÎªÍ·½Úµã
+        //åˆ¤æ–­å½“å‰èŠ‚ç‚¹æ˜¯å¦ä¸ºå¤´èŠ‚ç‚¹
         if(node.prev ==null){
             this.head = node.next;
         }else{
-        //Íê³Éµ±Ç°½ÚµãµÄÖ±½ÓÇ°Çı½ÚµãÓëµ±Ç°½ÚµãµÄÖ±½Óºó¼Ì½ÚµãµÄ¹Ò½Ó
+        //å®Œæˆå½“å‰èŠ‚ç‚¹çš„ç›´æ¥å‰é©±èŠ‚ç‚¹ä¸å½“å‰èŠ‚ç‚¹çš„ç›´æ¥åç»§èŠ‚ç‚¹çš„æŒ‚æ¥
             node.prev.next = node.next;
         }
-        //ÅĞ¶Ïµ±Ç°½ÚµãÊÇ·ñÎªÎ²½Úµã
+        //åˆ¤æ–­å½“å‰èŠ‚ç‚¹æ˜¯å¦ä¸ºå°¾èŠ‚ç‚¹
         if(node.next == null){
             this.tail = node.prev;
         }else{
-        //Íê³Éµ±Ç°½ÚµãµÄÖ±½Óºó¼Ì½ÚµãÓëµ±Ç°½ÚµãµÄÖ±½ÓÇ°Çı½ÚµãµÄ¹Ò½Ó
+        //å®Œæˆå½“å‰èŠ‚ç‚¹çš„ç›´æ¥åç»§èŠ‚ç‚¹ä¸å½“å‰èŠ‚ç‚¹çš„ç›´æ¥å‰é©±èŠ‚ç‚¹çš„æŒ‚æ¥
             node.next.prev = node.prev;
         }
-        //µ±Ç°½Úµã¶ÏµôÓëËüÖ±½ÓÇ°Çı½ÚµãµÄÁ¬½Ó
+        //å½“å‰èŠ‚ç‚¹æ–­æ‰ä¸å®ƒç›´æ¥å‰é©±èŠ‚ç‚¹çš„è¿æ¥
         node.prev = null;
-        //µ±Ç°½Úµã¶ÏµôÓëËüÖ±½Óºó¼Ì½ÚµãµÄÁ¬½Ó
+        //å½“å‰èŠ‚ç‚¹æ–­æ‰ä¸å®ƒç›´æ¥åç»§èŠ‚ç‚¹çš„è¿æ¥
         node.next = null;
         node.item = null;
-        //¼ÇÂ¼ÔªËØ¸öÊı
+        //è®°å½•å…ƒç´ ä¸ªæ•°
         this.size--;
         return item;
     }
 
-    //¹¦ÄÜÎå¡£ÔÚÖ¸¶¨µÄÎ»ÖÃ²åÈëÔªËØ
+    //åŠŸèƒ½äº”ã€‚åœ¨æŒ‡å®šçš„ä½ç½®æ’å…¥å…ƒç´ 
     public void insert(int index,E e){
         if(index==0){
             Node<E> E = new Node<>(null,e,null);
@@ -129,10 +129,10 @@ public class MyDoublyLinkedList<E> implements MyList<E> {
     }
 
 
-    //¹¦ÄÜÁù¡£¶ÔÁ´±í½øĞĞ±éÀú
+    //åŠŸèƒ½å…­ã€‚å¯¹é“¾è¡¨è¿›è¡Œéå†
     public void Look(MyDoublyLinkedList<E> e){
         if (e.head==null){
-            System.out.println("¸ÃÁ´±íÎª¿Õ!");
+            System.out.println("è¯¥é“¾è¡¨ä¸ºç©º!");
         }
         else {
             System.out.println(e.head.getItem());
@@ -144,11 +144,11 @@ public class MyDoublyLinkedList<E> implements MyList<E> {
     }
 
 
-    //¹¦ÄÜÆß¡£·­×ªÁ´±í
+    //åŠŸèƒ½ä¸ƒã€‚ç¿»è½¬é“¾è¡¨
     public void reserve(){
-        //ÅĞ¶ÏÁ´±íÊÇ·ñÎª¿Õ
+        //åˆ¤æ–­é“¾è¡¨æ˜¯å¦ä¸ºç©º
         if(this.size ==0){
-            System.out.println("¸ÃÁ´±íÎª¿Õ£¬ÇëÌîÈëÔªËØÔÚ½øĞĞ´Ë²Ù×÷£¡");
+            System.out.println("è¯¥é“¾è¡¨ä¸ºç©ºï¼Œè¯·å¡«å…¥å…ƒç´ åœ¨è¿›è¡Œæ­¤æ“ä½œï¼");
             return;
         }
         reverse(head.next);
@@ -159,11 +159,11 @@ public class MyDoublyLinkedList<E> implements MyList<E> {
             head.next = node;
             return node;
         }
-        //µİ¹éµÄ·´×ªµ±Ç°½ÚµãµÄÏÂÒ»¸ö½Úµã£¬·µ»ØÖµ¾ÍÊÇÁ´±í·´×ªºóµ±Ç°½ÚµãµÄÉÏÒ»¸ö½Úµã
+        //é€’å½’çš„åè½¬å½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ï¼Œè¿”å›å€¼å°±æ˜¯é“¾è¡¨åè½¬åå½“å‰èŠ‚ç‚¹çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹
         Node pre = reverse(node.next);
-        //ÈÃ·µ»ØµÄ½ÚµãµÄÏÂÒ»¸ö½Úµã±ä³Énode
+        //è®©è¿”å›çš„èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹å˜æˆnode
         pre.next = node;
-        //°Ñµ±Ç°½ÚµãµÄÏÂÒ»¸ö½Úµã±äÎªnull
+        //æŠŠå½“å‰èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹å˜ä¸ºnull
         node.next = null;
         return node;
     }
